@@ -54,6 +54,3 @@ DEPENDENCIES
   guard-shell
   minitest
   minitest-reporters
-
-BUNDLED WITH
-   1.11.2
