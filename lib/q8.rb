@@ -1,13 +1,3 @@
-class Meme
-  def i_can_has_cheezburger?
-    "OHAI!"
-  end
-
-  def will_it_blend?
-    "YES!"
-  end
-end
-
 module Q8
   BOARD_SIZE = 8
   EMPTY_CELL = '.'
@@ -173,3 +163,4 @@ def each_solution
   end while(fill_row_up(Q8::MAX_INDEX, board))
   i
 end
+

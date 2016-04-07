@@ -21,9 +21,17 @@
 # guard :shell do
 #   watch(/(.*).txt/) {|m| `tail #{m[0]}` }
 # end
-guard :shell do
-  watch(%r{^*\.rb}) do |m|
-    # puts '--------', m[0], '----========'
-    `bundle exec ruby --verbose test/main_test.rb`
-  end
+
+# Dlarionov previous script
+# guard :shell do
+#   watch(%r{^*\.rb}) do |m|
+#     # puts '--------', m[0], '----========'
+#     `bundle exec ruby --verbose test/main_test.rb`
+#   end
+# end
+
+guard :minitest do
+  watch(%r{^test/(.*)\/?(.*)_test\.rb$})
+  watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |m| "test/#{m[1]}#{m[2]}_test.rb" }
+  watch(%r{^test/test_helper\.rb$})      { 'test' }
 end

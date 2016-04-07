@@ -1,23 +1,9 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-
-require File.expand_path("main.rb")
-
-reporter_options = { color: true }
-Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
+require 'test_helper'
+require File.expand_path("./lib/q8.rb")
 
 class TestMeme < MiniTest::Unit::TestCase
   def setup
-    # @meme = Meme.new
   end
-
-  # def test_that_kitty_can_eat
-  #   assert_equal "OHAI!", @meme.i_can_has_cheezburger?
-  # end
-
-  # def test_that_it_will_not_blend
-  #   refute_match /^no/i, @meme.will_it_blend?
-  # end
 
   def test_new_board
     board = new_board()
@@ -49,7 +35,7 @@ class TestMeme < MiniTest::Unit::TestCase
     # 5 . . . . . . . Q
     # 4 . Q . . . . . .
     # 3 . . . . Q . . .
-    # 2 Q . . . . . . . 
+    # 2 Q . . . . . . .
     # 1 . . . . . Q . .
 
     board = new_board()
@@ -87,13 +73,13 @@ class TestMeme < MiniTest::Unit::TestCase
 
   def test_board_to_s
     board = create_other_solution
-    
+
     assert_equal 'a2,b4,c6,d8,e3,f1,g7,h5', board_to_s(board)
   end
 
   def test_board_from_s
     board = create_other_solution
-    
+
     assert_equal board_from_s('a2,b4,c6,d8,e3,f1,g7,h5'), board
     assert_equal board_from_s('a2, b4, c6, d8, e3, f1, g7, h5'), board
   end
@@ -105,8 +91,4 @@ class TestMeme < MiniTest::Unit::TestCase
 
     assert_equal true, next_board
   end
-
-  # def test_that_will_be_skipped
-  #   skip "test this later"
-  # end
 end
